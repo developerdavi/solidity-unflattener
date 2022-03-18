@@ -1,6 +1,6 @@
 {
   "name": "solidity-unflattener",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A tool for recreating solidity project files from flattened .sol contract files.",
   "main": "bin/index.js",
   "bin": {
