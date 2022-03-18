@@ -22,7 +22,7 @@
 ## Usage
 
 ```bash 
-solidity-unflattener <file_name> [<output_dir>] [-wd]
+npx solidity-unflattener <file_name> [<output_dir>] [-wd]
 ```
 
 ## How to contribute
