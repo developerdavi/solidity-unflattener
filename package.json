@@ -1,0 +1,30 @@
+{
+  "name": "solidity-unflattener",
+  "version": "1.0.0",
+  "description": "A tool for recreate a solidity project structure from a flattened contract file",
+  "main": "bin/index.js",
+  "bin": {
+    "solidity-unflattener": "./bin/index.js"
+  },
+  "files": [
+    "bin/",
+    "src/"
+  ],
+  "keywords": [
+    "cli",
+    "solidity",
+    "blockchain",
+    "smart-contracts",
+    "web3"
+  ],
+  "repository": "git@github.com:developerdavi/solidity-unflattener.git",
+  "author": "Davi Rodrigues <developer.davi@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "yargs": "^17.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.11.0"
+  }
+}
