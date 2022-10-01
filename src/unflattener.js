@@ -21,14 +21,16 @@ const unflattener = {
 
     const license = /SPDX-License-Identifier: (.*)\n/.exec(source);
 
-    const files = source.split(
-      /\/\/ Dependency file: |\/\/ Root file: |\/\/ File: /g
-    );
+    const filePattern =
+      /\/\/ Dependency file: |\/\/ Root file: |\/\/ File: |\/\/ File\s/g;
+
+    const files = source.split(filePattern);
 
     let written = 0;
 
     for (const file of files) {
       const [head] = file.split('\n');
+
       const dir = head.split('/').slice(0, -1).join('/');
 
       const contents = file
@@ -48,12 +50,16 @@ const unflattener = {
 
       console.log(head);
 
-      const result = contents.includes('// SPDX-License-Identifier')
-        ? `${contents.trim()}\n`
-        : `// SPDX-License-Identifier: ${license[1]}\n\n${contents.trim()}\n`;
+      const result = (
+        contents.includes('// SPDX-License-Identifier')
+          ? `${contents.trim()}\n`
+          : `// SPDX-License-Identifier: ${license[1]}\n\n${contents.trim()}\n`
+      ).replace(/(\n\n\n)+/g, '\n');
+
+      const fileName = head.replace(/\.sol@.*/, '.sol').trim();
 
       fs.mkdirSync(`${output}/${dir}`, { recursive: true });
-      fs.writeFileSync(`${output}/${head.trim()}`, result, {
+      fs.writeFileSync(`${output}/${fileName}`, result, {
         flag: 'w',
       });
 
