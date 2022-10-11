@@ -19,7 +19,9 @@ const unflattener = {
 
     const source = fs.readFileSync(fileName, 'utf8');
 
-    const license = /SPDX-License-Identifier: (.*)\n/.exec(source);
+    const foundLicense = /SPDX-License-Identifier: (.*)\n/.exec(source);
+
+    const license = foundLicense ? foundLicense[1] : 'UNLICENSED';
 
     const filePattern =
       /\/\/ Dependency file: |\/\/ Root file: |\/\/ File: |\/\/ File\s/g;
@@ -29,7 +31,9 @@ const unflattener = {
     let written = 0;
 
     for (const file of files) {
-      const [head] = file.split('\n');
+      let [head] = file.split('\n');
+
+      head = head.replace(/\\/g, '/').trim();
 
       const dir = head.split('/').slice(0, -1).join('/');
 
@@ -42,7 +46,7 @@ const unflattener = {
 
       if (
         (head.startsWith('@') && !withDependencies) ||
-        head.trim() === '' ||
+        head === '' ||
         !contents.includes('pragma solidity')
       ) {
         continue;
@@ -53,7 +57,7 @@ const unflattener = {
       const result = (
         contents.includes('// SPDX-License-Identifier')
           ? `${contents.trim()}\n`
-          : `// SPDX-License-Identifier: ${license[1]}\n\n${contents.trim()}\n`
+          : `// SPDX-License-Identifier: ${license}\n\n${contents.trim()}\n`
       ).replace(/(\n\n\n)+/g, '\n');
 
       const fileName = head.replace(/\.sol@.*/, '.sol').trim();
