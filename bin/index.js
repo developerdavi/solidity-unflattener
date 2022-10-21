@@ -2,7 +2,9 @@
 
 const yargs = require('yargs');
 
-const usage = '\nUsage: solidity-unflattener <file_name> [<output_dir>] [--wd]';
+const usage =
+  '\nUsage: npx @devdavi/unflatten <file_name> [<output_dir>] [--wd]';
+
 yargs
   .usage(usage)
   .option('wd', {
