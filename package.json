@@ -21,6 +21,9 @@
   "author": "Davi Rodrigues <developer.davi@gmail.com>",
   "license": "MIT",
   "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "yargs": "^17.3.1"
   },
