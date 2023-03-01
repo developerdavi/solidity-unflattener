@@ -1,10 +1,10 @@
 {
-  "name": "solidity-unflattener",
-  "version": "1.0.4",
+  "name": "@devdavi/unflatten",
+  "version": "1.0.5",
   "description": "A tool for recreating solidity project files from flattened .sol contract files.",
   "main": "bin/index.js",
   "bin": {
-    "solidity-unflattener": "./bin/index.js"
+    "unflatten": "./bin/index.js"
   },
   "files": [
     "bin/",
@@ -21,6 +21,9 @@
   "author": "Davi Rodrigues <developer.davi@gmail.com>",
   "license": "MIT",
   "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "yargs": "^17.3.1"
   },

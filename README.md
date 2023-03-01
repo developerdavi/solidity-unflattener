@@ -1,7 +1,7 @@
 <div align="center">
-  <a href="https://alig.ondaniel.com.br/">
+  <a href="https://github.com/developerdavi/solidity-unflattener">
     <div>
-      <h2 style="color: #ff0000">Solidity Unflattener</h2>
+      <h2>Solidity Unflattener</h2>
     </div>
   </a>
   <div>
@@ -22,7 +22,7 @@
 ## Usage
 
 ```bash 
-npx solidity-unflattener <file_name> [<output_dir>] [--wd]
+npx @devdavi/unflatten <file_name> [<output_dir>] [--wd]
 ```
 
 ## How to contribute
